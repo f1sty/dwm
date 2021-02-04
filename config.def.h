@@ -42,9 +42,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Google-chrome",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "mpv",  NULL,       NULL,       1 << 3,       1,           -1 },
+	{ "mpv",  NULL,       NULL,       0,       1,           -1 },
 	{ "Zathura",  NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "st-256color",  NULL,       "cmus",       1 << 3,       0,           -1 },
+	{ "st-256color",  NULL,       "cmus",       1 << 3,       0,           1 },
     { "Nightly", "Navigator", NULL, 1 << 1, 0, -1},
 };
 
@@ -74,7 +74,11 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", color_bg, "-nf", color_fg, "-sb", color_bg_selected, "-sf", color_fg_selected, "-b", "-i", NULL };
-static const char *termcmd[]  = { "urxvtc", "-fn", "xft:Liberation Mono:size=10", "-fg", "white", "-e", "tmux", NULL };
+static const char *termcmd[]  = { "st", "-f", "unifont:size=11", "-e", "tmux", NULL };
+static const char *lockcmd[] = { "slock", NULL };
+static const char *browser[] = { "firefox", NULL };
+/* static const char *termcmd[]  = { "urxvtc", "-fn", "xft:Liberation Mono:size=10", "-e", "tmux", NULL }; */
+/* static const char *termcmd[]  = { "xterm", "-u8", "-uc", "-fn", "xft:unifont:size=9", "-e", "tmux", NULL }; */
 static const char *cmus[]  = { "st", "-e", "cmus", NULL };
 static const char *cmus_pause[] = { "cmus-remote", "-u", NULL };
 static const char *inc[] = { "pamixer", "-i", "2", NULL };
@@ -84,12 +88,14 @@ static const char *tmute[] = { "pamixer", "-t", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                         XF86XK_AudioMute,spawn,          {.v = tmute } },
 	{ 0,                         XF86XK_AudioRaiseVolume,spawn,          {.v = inc } },
 	{ 0,                         XF86XK_AudioLowerVolume,spawn,          {.v = dec } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = cmus } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = cmus_pause } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -105,12 +111,21 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 10y 0w 0h" } },
+	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -10y 0w 0h" } },
+	{ MODKEY,                       XK_Right,  moveresize,     {.v = "10x 0y 0w 0h" } },
+	{ MODKEY,                       XK_Left,   moveresize,     {.v = "-10x 0y 0w 0h" } },
+	{ MODKEY|ShiftMask,             XK_Down,   moveresize,     {.v = "0x 0y 0w 10h" } },
+	{ MODKEY|ShiftMask,             XK_Up,     moveresize,     {.v = "0x 0y 0w -10h" } },
+	{ MODKEY|ShiftMask,             XK_Right,  moveresize,     {.v = "0x 0y 10w 0h" } },
+	{ MODKEY|ShiftMask,             XK_Left,   moveresize,     {.v = "0x 0y -10w 0h" } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
