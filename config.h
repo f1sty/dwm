@@ -28,7 +28,8 @@ static const char *colors[][3]            = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+#define MAX_TAGLEN 16
+static char tags[][MAX_TAGLEN] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -131,6 +132,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask , XK_k                    , spawn          , {.v = move_up} }             ,
 	{ MODKEY|ShiftMask , XK_g                    , spawn          , {.v = click_right} }         ,
 	{ MODKEY|ShiftMask , XK_v                    , spawn          , {.v = click_left} }          ,
+	{ MODKEY           , XK_n                    , nametag        , {0} }                        ,
 	TAGKEYS(XK_1 , 0)
 	TAGKEYS(XK_2 , 1)
 	TAGKEYS(XK_3 , 2)
