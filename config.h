@@ -74,6 +74,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]           = { "rofi", "-show", "combi", NULL};
 static const char *clipmenu[]           = { "clipmenu", NULL};
+static const char *screenshot[]         = { "screenshot", NULL};
+static const char *rofi_pass[]          = { "rofi-pass", NULL};
 static const char *termcmd[]            = { "st", "-e", "tmux", NULL };
 static const char *lock[]               = { "slock", NULL };
 static const char *browser[]            = { "firefox", NULL };
@@ -99,6 +101,8 @@ static Key keys[] = {
 	{ MODKEY                       , XK_v                    , spawn          , {.v = clipmenu } }           ,
 	{ MODKEY                       , XK_Return               , spawn          , {.v = termcmd } }            ,
 	{ MODKEY|ShiftMask             , XK_n                    , spawn          , {.v = close_notification } } ,
+	{ MODKEY|ShiftMask             , XK_p                    , spawn          , {.v = rofi_pass } }          ,
+	{ MODKEY|ShiftMask             , XK_s                    , spawn          , {.v = screenshot } }         ,
 	{ MODKEY                       , XK_b                    , togglebar      , {0} }                        ,
 	{ MODKEY                       , XK_j                    , focusstack     , {.i = +1 } }                 ,
 	{ MODKEY                       , XK_k                    , focusstack     , {.i = -1 } }                 ,
