@@ -73,6 +73,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]           = { "rofi-menu", NULL};
+static const char *radio[]              = { "rofi-beats", NULL};
 static const char *clipmenu[]           = { "clipmenu", NULL};
 static const char *screenshot[]         = { "screenshot", NULL};
 static const char *rofi_pass[]          = { "rofi-pass", NULL};
@@ -103,6 +104,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask             , XK_n                    , spawn          , {.v = close_notification } } ,
 	{ MODKEY|ShiftMask             , XK_p                    , spawn          , {.v = rofi_pass } }          ,
 	{ MODKEY|ShiftMask             , XK_s                    , spawn          , {.v = screenshot } }         ,
+	{ MODKEY|ShiftMask             , XK_r                    , spawn          , {.v = radio } }              ,
 	{ MODKEY                       , XK_b                    , togglebar      , {0} }                        ,
 	{ MODKEY                       , XK_j                    , focusstack     , {.i = +1 } }                 ,
 	{ MODKEY                       , XK_k                    , focusstack     , {.i = -1 } }                 ,
