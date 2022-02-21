@@ -41,6 +41,7 @@ static const Rule rules[] = {
 	{ "Google-chrome" , NULL        , NULL , 1 << 1 , 0 , -1 } ,
 	{ "firefox"       , NULL        , NULL , 1 << 1 , 0 , -1 } ,
 	{ "mpv"           , NULL        , NULL , 1 << 3 , 1 , -1 } ,
+	{ "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
 	{ "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
 	{ "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
     { "Nightly"       , "Navigator" , NULL , 1 << 1 , 0 , -1 }  ,
