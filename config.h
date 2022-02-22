@@ -156,8 +156,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask             , XK_l                    , spawn          , {.v = move_right} }          ,
 	{ MODKEY|ShiftMask             , XK_j                    , spawn          , {.v = move_down} }           ,
 	{ MODKEY|ShiftMask             , XK_k                    , spawn          , {.v = move_up} }             ,
-	{ MODKEY|ShiftMask             , XK_g                    , spawn          , {.v = click_right} }         ,
-	{ MODKEY|ShiftMask             , XK_v                    , spawn          , {.v = click_left} }          ,
+	{ MODKEY|ControlMask           , XK_g                    , spawn          , {.v = click_right} }         ,
+	{ MODKEY|ControlMask           , XK_v                    , spawn          , {.v = click_left} }          ,
 	{ MODKEY                       , XK_n                    , nametag        , {0} }                        ,
 	TAGKEYS(XK_1 , 0)
 	TAGKEYS(XK_2 , 1)
