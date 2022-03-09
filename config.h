@@ -44,7 +44,8 @@ static const Rule rules[] = {
 	{ "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
 	{ "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
 	{ "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
-    { "Nightly"       , "Navigator" , NULL , 1 << 1 , 0 , -1 }  ,
+    { "Nightly"       , "Navigator" , NULL , 1 << 1 , 0 , -1 } ,
+    { "TelegramDesktop" , NULL, NULL , 1 << 4 , 0 , -1 } ,
 };
 
 /* layout(s) */
