@@ -13,7 +13,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar                  = 1;        /* 0 means no bar */
 static const int topbar                   = 1;        /* 0 means bottom bar */
-static const char *fonts[]                = { "Font Awesome 5 Free:style=solid:size=8", "JetBrains Mono:size=8" };
+static const char *fonts[]                = { "JetBrains Mono:size=8", "Font Awesome 6 Free Solid:size=8"};
 static const char dmenufont[]             = "JetBrains Mono:size=8";
 static const char color_fg[]              = "#ebdbb2";
 static const char color_fg_selected[]     = "#ebdbb2";
@@ -29,7 +29,7 @@ static const char *colors[][3]            = {
 
 /* tagging */
 #define MAX_TAGLEN 16
-static char tags[][MAX_TAGLEN] = { "", "", "", "", "", "", "", "", "" };
+static char tags[][MAX_TAGLEN] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
