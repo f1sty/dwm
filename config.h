@@ -90,12 +90,13 @@ static const char *volume_up[]          = { "pactl", "set-sink-volume", "0", "+5
 static const char *volume_down[]        = { "pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *toggle_mute[]        = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *close_notification[] = { "dunstctl", "close-all", NULL };
-static const char *move_right[]         = { "xdotool", "mousemove_relative", "10", "0", NULL};
-static const char *move_left[]          = { "xdotool", "mousemove_relative", "--", "-10", "0", NULL};
-static const char *move_up[]            = { "xdotool", "mousemove_relative", "--", "0", "-10", NULL};
-static const char *move_down[]          = { "xdotool", "mousemove_relative", "0", "10", NULL};
-static const char *click_left[]         = { "xdotool", "click", "1", NULL};
-static const char *click_right[]        = { "xdotool", "click", "3", NULL};
+/* static const char *move_right[]         = { "xdotool", "mousemove_relative", "10", "0", NULL}; */
+/* static const char *move_left[]          = { "xdotool", "mousemove_relative", "--", "-10", "0", NULL}; */
+/* static const char *move_up[]            = { "xdotool", "mousemove_relative", "--", "0", "-10", NULL}; */
+/* static const char *move_down[]          = { "xdotool", "mousemove_relative", "0", "10", NULL}; */
+/* static const char *click_left[]         = { "xdotool", "click", "1", NULL}; */
+/* static const char *click_right[]        = { "xdotool", "click", "3", NULL}; */
+static const char *xmouseless[]        = { "xmouseless", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -152,13 +153,14 @@ static Key keys[] = {
 	{ 0                            , XF86XK_AudioNext        , spawn          , {.v = cmus_next } }          ,
 	{ 0                            , XF86XK_AudioPrev        , spawn          , {.v = cmus_prev } }          ,
 	{ MODKEY|ShiftMask             , XK_m                    , spawn          , {.v = cmus } }               ,
+	{ MODKEY|ControlMask           , XK_m                    , spawn          , {.v = xmouseless } }         ,
 	{ MODKEY                       , XK_q                    , spawn          , {.v = lock } }               ,
-	{ MODKEY|ShiftMask             , XK_h                    , spawn          , {.v = move_left} }           ,
-	{ MODKEY|ShiftMask             , XK_l                    , spawn          , {.v = move_right} }          ,
-	{ MODKEY|ShiftMask             , XK_j                    , spawn          , {.v = move_down} }           ,
-	{ MODKEY|ShiftMask             , XK_k                    , spawn          , {.v = move_up} }             ,
-	{ MODKEY|ControlMask           , XK_g                    , spawn          , {.v = click_right} }         ,
-	{ MODKEY|ControlMask           , XK_v                    , spawn          , {.v = click_left} }          ,
+	/* { MODKEY|ShiftMask             , XK_h                    , spawn          , {.v = move_left} }           , */
+	/* { MODKEY|ShiftMask             , XK_l                    , spawn          , {.v = move_right} }          , */
+	/* { MODKEY|ShiftMask             , XK_j                    , spawn          , {.v = move_down} }           , */
+	/* { MODKEY|ShiftMask             , XK_k                    , spawn          , {.v = move_up} }             , */
+	/* { MODKEY|ControlMask           , XK_g                    , spawn          , {.v = click_right} }         , */
+	/* { MODKEY|ControlMask           , XK_v                    , spawn          , {.v = click_left} }          , */
 	{ MODKEY                       , XK_n                    , nametag        , {0} }                        ,
 	TAGKEYS(XK_1 , 0)
 	TAGKEYS(XK_2 , 1)
