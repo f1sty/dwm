@@ -13,8 +13,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar                  = 1;        /* 0 means no bar */
 static const int topbar                   = 1;        /* 0 means bottom bar */
-static const char *fonts[]                = { "JetBrains Mono:size=8", "Font Awesome 6 Free Solid:size=8"};
-static const char dmenufont[]             = "JetBrains Mono:size=8";
+static const char *fonts[]                = { "JetBrainsMono Nerd Font:size=8" };
+static const char dmenufont[]             = "JetBrainsMono Nerd Font:size=8";
 static const char color_fg[]              = "#ebdbb2";
 static const char color_fg_selected[]     = "#ebdbb2";
 static const char color_bg[]              = "#282828";
@@ -29,7 +29,7 @@ static const char *colors[][3]            = {
 
 /* tagging */
 #define MAX_TAGLEN 16
-static char tags[][MAX_TAGLEN] = { "", "", "", "", "", "", "", "", "" };
+static char tags[][MAX_TAGLEN] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -97,6 +97,7 @@ static const char *close_notification[] = { "dunstctl", "close-all", NULL };
 /* static const char *click_left[]         = { "xdotool", "click", "1", NULL}; */
 /* static const char *click_right[]        = { "xdotool", "click", "3", NULL}; */
 static const char *xmouseless[]        = { "xmouseless", NULL};
+/* static const char *keynav[]            = { "keynav", NULL}; */
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -154,6 +155,7 @@ static Key keys[] = {
 	{ 0                            , XF86XK_AudioPrev        , spawn          , {.v = cmus_prev } }          ,
 	{ MODKEY|ShiftMask             , XK_m                    , spawn          , {.v = cmus } }               ,
 	{ MODKEY|ControlMask           , XK_m                    , spawn          , {.v = xmouseless } }         ,
+	/* { MODKEY|ControlMask           , XK_k                    , spawn          , {.v = keynav } }             , */
 	{ MODKEY                       , XK_q                    , spawn          , {.v = lock } }               ,
 	/* { MODKEY|ShiftMask             , XK_h                    , spawn          , {.v = move_left} }           , */
 	/* { MODKEY|ShiftMask             , XK_l                    , spawn          , {.v = move_right} }          , */
