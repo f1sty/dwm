@@ -44,6 +44,7 @@ static const Rule rules[] = {
 	{ "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
 	{ "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
 	{ "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
+	{ NULL            , "music"     , NULL , 1 << 8 , 0 , -1 } ,
     { "Nightly"       , "Navigator" , NULL , 1 << 1 , 0 , -1 } ,
     { "TelegramDesktop" , NULL, NULL , 1 << 4 , 0 , -1 } ,
 };
@@ -82,7 +83,7 @@ static const char *rofi_pass[]          = { "rofi-pass", NULL};
 static const char *termcmd[]            = { "st", "-e", "tmux", NULL };
 static const char *lock[]               = { "slock", NULL };
 static const char *browser[]            = { "firefox", NULL };
-static const char *cmus[]               = { "st", "-e", "cmus", NULL };
+static const char *cmus[]               = { "st", "-n", "music", "-e", "cmus", NULL };
 static const char *cmus_pause[]         = { "cmus-remote", "-u", NULL };
 static const char *cmus_next[]          = { "cmus-remote", "-n", NULL };
 static const char *cmus_prev[]          = { "cmus-remote", "-r", NULL };
