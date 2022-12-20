@@ -32,23 +32,24 @@ static const char *colors[][3]            = {
 static char tags[][MAX_TAGLEN] = { "", "", "", "", "", "", "", "", "ﱘ" };
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp"          , NULL        , NULL , 0      , 1 , -1 } ,
-	{ "Google-chrome" , NULL        , NULL , 1 << 1 , 0 , -1 } ,
-	{ "firefox"       , NULL        , NULL , 1 << 1 , 0 , -1 } ,
-	{ "mpv"           , NULL        , NULL , 1 << 3 , 1 , -1 } ,
-	{ "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
-	{ "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
-	{ "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
-	{ "zoom "         , NULL        , NULL , 1 << 5 , 1 , -1 } ,
-	{ "DBeaver"       , NULL        , NULL , 1 << 6 , 0 , -1 } ,
-	{ "Slack"         , NULL        , NULL , 1 << 4 , 0 , -1 } ,
+    /* xprop(1):
+     *	WM_CLASS(STRING) = instance, class
+     *	WM_NAME(STRING) = title
+     */
+    /* class      instance    title       tags mask     isfloating   monitor */
+    { "Gimp"          , NULL        , NULL , 0      , 1 , -1 } ,
+    { "Google-chrome" , NULL        , NULL , 1 << 1 , 0 , -1 } ,
+    { "firefox"       , NULL        , NULL , 1 << 1 , 0 , -1 } ,
+    { "mpv"           , NULL        , NULL , 1 << 3 , 1 , -1 } ,
+    { "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
+    { "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
+    { "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
+    { "DBeaver"       , NULL        , NULL , 1 << 6 , 0 , -1 } ,
+    { "Slack"         , NULL        , NULL , 1 << 4 , 0 , -1 } ,
+    { "zoom"          , NULL        , NULL , 1 << 4 , 1 , -1 } ,
+    { "discord"       , NULL        , NULL , 1 << 4 , 0 , -1 } ,
     { "TelegramDesktop" , NULL      , NULL , 1 << 4 , 0 , -1 } ,
-	{ NULL            , "music"     , NULL , 1 << 8 , 0 , -1 } ,
+    { NULL            , "music"     , NULL , 1 << 8 , 0 , -1 } ,
     { "Nightly"       , "Navigator" , NULL , 1 << 1 , 0 , -1 } ,
 };
 
@@ -68,10 +69,10 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+    { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+    { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+    { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+    { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -84,7 +85,10 @@ static const char *clipmenu[]           = { "clipmenu", NULL};
 static const char *screenshot[]         = { "screenshot", NULL};
 static const char *rofi_pass[]          = { "rofi-pass", NULL};
 static const char *termcmd[]            = { "st", "-e", "tmstart", NULL };
+static const char *zoomim[]               = { "zoom", NULL };
+static const char *discord[]               = { "discord", NULL };
 static const char *lock[]               = { "slock", NULL };
+static const char *telegram[]               = { "telegram-desktop", NULL };
 static const char *browser[]            = { "firefox", NULL };
 static const char *cmus[]               = { "st", "-n", "music", "-e", "cmus", NULL };
 static const char *cmus_pause[]         = { "cmus-remote", "-u", NULL };
@@ -100,12 +104,15 @@ static const char *close_notification[] = { "dunstctl", "close-all", NULL };
 /* static const char *move_down[]          = { "xdotool", "mousemove_relative", "0", "10", NULL}; */
 /* static const char *click_left[]         = { "xdotool", "click", "1", NULL}; */
 /* static const char *click_right[]        = { "xdotool", "click", "3", NULL}; */
-static const char *xmouseless[]        = { "xmouseless", NULL};
+// static const char *xmouseless[]        = { "xmouseless", NULL};
 /* static const char *keynav[]            = { "keynav", NULL}; */
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY                       , XK_p                    , spawn          , {.v = dmenucmd } }           ,
+	{ MODKEY                       , XK_z                    , spawn          , {.v = zoomim } }           ,
+	{ MODKEY|ShiftMask             , XK_t                    , spawn          , {.v = telegram } }           ,
+	{ MODKEY|ShiftMask             , XK_d                    , spawn          , {.v = discord } }           ,
 	{ MODKEY                       , XK_w                    , spawn          , {.v = browser } }            ,
 	{ MODKEY                       , XK_v                    , spawn          , {.v = clipmenu } }           ,
 	{ MODKEY                       , XK_Return               , spawn          , {.v = termcmd } }            ,
@@ -158,7 +165,7 @@ static Key keys[] = {
 	{ 0                            , XF86XK_AudioNext        , spawn          , {.v = cmus_next } }          ,
 	{ 0                            , XF86XK_AudioPrev        , spawn          , {.v = cmus_prev } }          ,
 	{ MODKEY|ShiftMask             , XK_m                    , spawn          , {.v = cmus } }               ,
-	{ MODKEY|ControlMask           , XK_m                    , spawn          , {.v = xmouseless } }         ,
+	// { MODKEY|ControlMask           , XK_m                    , spawn          , {.v = xmouseless } }         ,
 	/* { MODKEY|ControlMask           , XK_k                    , spawn          , {.v = keynav } }             , */
 	{ MODKEY                       , XK_q                    , spawn          , {.v = lock } }               ,
 	/* { MODKEY|ShiftMask             , XK_h                    , spawn          , {.v = move_left} }           , */
