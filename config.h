@@ -41,6 +41,7 @@ static const Rule rules[] = {
     { "Google-chrome" , NULL        , NULL , 1 << 1 , 0 , -1 } ,
     { "firefox"       , NULL        , NULL , 1 << 1 , 0 , -1 } ,
     { "mpv"           , NULL        , NULL , 1 << 3 , 1 , -1 } ,
+    { "notes"         , NULL        , NULL , 0      , 1 , -1 } ,
     { "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
     { "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
     { "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
@@ -86,6 +87,7 @@ static const char *clipmenu[]           = { "clipmenu", NULL};
 static const char *screenshot[]         = { "screenshot", NULL};
 static const char *rofi_pass[]          = { "rofi-pass", NULL};
 static const char *termcmd[]            = { "st", "-e", "tmstart", NULL };
+static const char *takenote[]            = { "st", "-c", "notes", "-e", "note", NULL };
 static const char *zoomim[]               = { "zoom", NULL };
 static const char *discord[]               = { "discord", NULL };
 static const char *lock[]               = { "slock", NULL };
@@ -111,12 +113,13 @@ static const char *close_notification[] = { "dunstctl", "close-all", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY                       , XK_p                    , spawn          , {.v = dmenucmd } }           ,
-	{ MODKEY                       , XK_z                    , spawn          , {.v = zoomim } }           ,
+	{ MODKEY                       , XK_z                    , spawn          , {.v = zoomim } }             ,
 	{ MODKEY|ShiftMask             , XK_t                    , spawn          , {.v = telegram } }           ,
-	{ MODKEY|ShiftMask             , XK_d                    , spawn          , {.v = discord } }           ,
+	{ MODKEY|ShiftMask             , XK_d                    , spawn          , {.v = discord } }            ,
 	{ MODKEY                       , XK_w                    , spawn          , {.v = browser } }            ,
 	{ MODKEY                       , XK_v                    , spawn          , {.v = clipmenu } }           ,
 	{ MODKEY                       , XK_Return               , spawn          , {.v = termcmd } }            ,
+	{ MODKEY                       , XK_n                    , spawn          , {.v = takenote } }           ,
 	{ MODKEY|ShiftMask             , XK_n                    , spawn          , {.v = close_notification } } ,
 	{ MODKEY|ShiftMask             , XK_p                    , spawn          , {.v = rofi_pass } }          ,
 	{ MODKEY|ShiftMask             , XK_s                    , spawn          , {.v = screenshot } }         ,
@@ -176,7 +179,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask             , XK_k                    , spawn          , {.v = move_up} }             , */
 	/* { MODKEY|ControlMask           , XK_g                    , spawn          , {.v = click_right} }         , */
 	/* { MODKEY|ControlMask           , XK_v                    , spawn          , {.v = click_left} }          , */
-	{ MODKEY                       , XK_n                    , nametag        , {0} }                        ,
+	/* { MODKEY                       , XK_n                    , nametag        , {0} }                        , */
 	TAGKEYS(XK_1 , 0)
 	TAGKEYS(XK_2 , 1)
 	TAGKEYS(XK_3 , 2)
