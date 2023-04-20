@@ -13,8 +13,12 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar                  = 1;        /* 0 means no bar */
 static const int topbar                   = 1;        /* 0 means bottom bar */
-static const char *fonts[]                = { "JetBrainsMono Nerd Font:size=8" };
+static const char *fonts[]                = { "JetBrainsMono Nerd Font:size=8"};
 static const char dmenufont[]             = "JetBrainsMono Nerd Font:size=8";
+/* static const char *fonts[]                = { "Mononoki Nerd Font Mono:size=8" }; */
+/* static const char dmenufont[]             = "Mononoki Nerd Font Mono:size=8"; */
+/* static const char *fonts[]                = { "FuraMono Nerd Font Mono:size=8" }; */
+/* static const char dmenufont[]             = "FuraMono Nerd Font Mono:size=8"; */
 static const char color_fg[]              = "#ebdbb2";
 static const char color_fg_selected[]     = "#ebdbb2";
 static const char color_bg[]              = "#282828";
@@ -41,7 +45,9 @@ static const Rule rules[] = {
     { "Google-chrome" , NULL        , NULL , 1 << 1 , 0 , -1 } ,
     { "firefox"       , NULL        , NULL , 1 << 1 , 0 , -1 } ,
     { "mpv"           , NULL        , NULL , 1 << 3 , 1 , -1 } ,
+    { "Spotify"       , NULL        , NULL , 1 << 3 , 1 , -1 } ,
     { "notes"         , NULL        , NULL , 0      , 1 , -1 } ,
+    { "todos"         , NULL        , NULL , 0      , 1 , -1 } ,
     { "Dunst"         , NULL        , NULL , 0      , 1 , -1 } ,
     { "Zathura"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
     { "Gnucash"       , NULL        , NULL , 1 << 2 , 0 , -1 } ,
@@ -88,10 +94,12 @@ static const char *screenshot[]         = { "screenshot", NULL};
 static const char *rofi_pass[]          = { "rofi-pass", NULL};
 static const char *termcmd[]            = { "st", "-e", "tmstart", NULL };
 static const char *takenote[]            = { "st", "-c", "notes", "-e", "note", NULL };
+static const char *todos[]            = { "st", "-c", "todos", "-e", "calcurse", NULL };
 static const char *zoomim[]               = { "zoom", NULL };
 static const char *discord[]               = { "discord", NULL };
 static const char *lock[]               = { "slock", NULL };
 static const char *telegram[]               = { "telegram-desktop", NULL };
+static const char *spotify[]               = { "spotify", NULL };
 static const char *browser[]            = { "firefox", NULL };
 static const char *cmus[]               = { "st", "-n", "music", "-e", "cmus", NULL };
 static const char *cmus_pause[]         = { "cmus-remote", "-u", NULL };
@@ -120,6 +128,8 @@ static Key keys[] = {
 	{ MODKEY                       , XK_v                    , spawn          , {.v = clipmenu } }           ,
 	{ MODKEY                       , XK_Return               , spawn          , {.v = termcmd } }            ,
 	{ MODKEY                       , XK_n                    , spawn          , {.v = takenote } }           ,
+	{ MODKEY                       , XK_c                    , spawn          , {.v = todos } }           ,
+	{ MODKEY                       , XK_a                    , spawn          , {.v = spotify } }           ,
 	{ MODKEY|ShiftMask             , XK_n                    , spawn          , {.v = close_notification } } ,
 	{ MODKEY|ShiftMask             , XK_p                    , spawn          , {.v = rofi_pass } }          ,
 	{ MODKEY|ShiftMask             , XK_s                    , spawn          , {.v = screenshot } }         ,
