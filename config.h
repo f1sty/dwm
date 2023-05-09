@@ -42,8 +42,8 @@ static const char *colors[][3] = {
 
 /* tagging */
 #define MAX_TAGLEN 16
-static char tags[][MAX_TAGLEN] = {"", "", "", "", "",
-                                  "", "", "", "ﱘ"};
+static char tags[][MAX_TAGLEN] = {"", "", "", "", "✍",
+                                  "", "", "", "🎶"};
 
 static const Rule rules[] = {
     /* xprop(1):
