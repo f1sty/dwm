@@ -42,7 +42,7 @@ static const char *colors[][3] = {
 
 /* tagging */
 #define MAX_TAGLEN 16
-static char tags[][MAX_TAGLEN] = {"", "", "", "", "✍",
+static char tags[][MAX_TAGLEN] = {"", "", "", "",
                                   "", "", "", "🎶"};
 
 static const Rule rules[] = {
@@ -66,7 +66,7 @@ static const Rule rules[] = {
     {"zoom", NULL, NULL, 1 << 4, 1, -1},
     {"discord", NULL, NULL, 1 << 4, 0, -1},
     {"TelegramDesktop", NULL, NULL, 1 << 4, 0, -1},
-    {NULL, "music", NULL, 1 << 8, 0, -1},
+    {NULL, "music", NULL, 1 << 7, 0, -1},
     {"Nightly", "Navigator", NULL, 1 << 1, 0, -1},
 };
 
