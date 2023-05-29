@@ -29,7 +29,8 @@ static const char dmenufont[] = "Font Awesome 6 Free:style=Regular:size=8";
  * Mono:size=8" }; */
 /* static const char dmenufont[]             = "FuraMono Nerd Font Mono:size=8";
  */
-static const char color_fg[] = "#aaef31";
+// static const char color_fg[] = "#aaef31";
+static const char color_fg[] = "#7270ce";
 static const char color_fg_selected[] = "#fdcd11";
 static const char color_bg[] = "#303030";
 static const char color_bg_selected[] = "#454550";
