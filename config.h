@@ -68,7 +68,7 @@ static const Rule rules[] = {
     {"Dunst", NULL, NULL, 0, 1, -1},
     {"Zathura", NULL, NULL, 1 << 2, 0, -1},
     {"Gnucash", NULL, NULL, 1 << 2, 0, -1},
-    {"DBeaver", NULL, NULL, 1 << 6, 0, -1},
+    {"DBeaver", NULL, NULL, 1 << 5, 0, -1},
     {"Slack", NULL, NULL, 1 << 4, 0, -1},
     {"zoom", NULL, NULL, 1 << 4, 1, -1},
     {"discord", NULL, NULL, 1 << 4, 0, -1},
