@@ -26,7 +26,7 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "👥", "💼", "🖌️", "🚢", "🔍"};
+static const char *tags[] = {"", "", "", "", "", "", "🖌️", "", ""};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -34,23 +34,23 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-        {"Gimp"            , NULL        , NULL , 0      , 1 , -1} ,
-        {"Google-chrome"   , NULL        , NULL , 1 << 1 , 0 , -1} ,
-        {"firefox"         , NULL        , NULL , 1 << 1 , 0 , -1} ,
-        {"mpv"             , NULL        , NULL , 1 << 3 , 1 , -1} ,
-        {"Spotify"         , NULL        , NULL , 1 << 3 , 1 , -1} ,
-        {"wiki"            , NULL        , NULL , 0      , 1 , -1} ,
-        {"todos"           , NULL        , NULL , 0      , 1 , -1} ,
-        {"Dunst"           , NULL        , NULL , 0      , 1 , -1} ,
-        {"Zathura"         , NULL        , NULL , 1 << 2 , 0 , -1} ,
-        {"Gnucash"         , NULL        , NULL , 1 << 2 , 0 , -1} ,
-        {"DBeaver"         , NULL        , NULL , 1 << 5 , 0 , -1} ,
-        {"Slack"           , NULL        , NULL , 1 << 4 , 0 , -1} ,
-        {"zoom"            , NULL        , NULL , 1 << 4 , 1 , -1} ,
-        {"discord"         , NULL        , NULL , 1 << 4 , 0 , -1} ,
-        {"TelegramDesktop" , NULL        , NULL , 1 << 4 , 0 , -1} ,
-        {NULL              , "music"     , NULL , 1 << 3 , 0 , -1} ,
-        {"Nightly"         , "Navigator" , NULL , 1 << 1 , 0 , -1} ,
+        {"Gimp"            , NULL        , NULL   , 0      , 1 , -1} ,
+        {"Google-chrome"   , NULL        , NULL   , 1 << 1 , 0 , -1} ,
+        {"firefox"         , NULL        , NULL   , 1 << 1 , 0 , -1} ,
+        {"mpv"             , NULL        , NULL   , 1 << 4 , 1 , 0}  ,
+        {"Spotify"         , NULL        , NULL   , 1 << 4 , 1 , 0}  ,
+        {"wiki"            , NULL        , NULL   , 0      , 1 , -1} ,
+        {"todos"           , NULL        , NULL   , 0      , 1 , -1} ,
+        {"Dunst"           , NULL        , NULL   , 0      , 1 , -1} ,
+        {"Zathura"         , NULL        , NULL   , 1 << 2 , 0 , -1} ,
+        {"Gnucash"         , NULL        , NULL   , 1 << 2 , 0 , -1} ,
+        {"DBeaver"         , NULL        , NULL   , 1 << 5 , 0 , -1} ,
+        {"Slack"           , NULL        , NULL   , 1 << 3 , 0 , 0}  ,
+        {"zoom"            , NULL        , NULL   , 1 << 3 , 1 , -1} ,
+        {"discord"         , NULL        , NULL   , 1 << 3 , 0 , -1} ,
+        {"TelegramDesktop" , NULL        , NULL   , 1 << 3 , 0 , -1} ,
+        {NULL              , NULL        , "cmus" , 1 << 4 , 0 , 0}  ,
+        {"Nightly"         , "Navigator" , NULL   , 1 << 1 , 0 , -1} ,
 };
 
 /* layout(s) */
@@ -61,9 +61,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
-	{ "👁️",      NULL },    /* no layout function means floating behavior */
-	{ "",      monocle },
+	{ "[T]",      tile },    /* first entry is default */
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -81,7 +81,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]              = {"rofi-menu.sh", NULL};
 static const char *termcmd[]               = {"st", "-e", "tmux-session.sh", NULL};
-static const char *wiki[]                  = {"st", "-e", "wiki.sh", "-c", "wiki", NULL};
+static const char *wiki[]                  = {"st", "-e", "wiki.sh", NULL};
 static const char *cmus[]                  = {"st", "-e", "cmus", NULL};
 static const char *pop_last_notification[] = {"dunstctl", "history-pop", NULL};
 static const char *close_notification[]    = {"dunstctl", "close-all", NULL};
