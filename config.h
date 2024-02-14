@@ -113,8 +113,8 @@ static const char *backlit_screen_dim[]    = { "backlit.sh", "screen_dim", NULL 
 static const char *backlit_screen_full[]   = { "backlit.sh", "screen_full", NULL };
 static const char *backlit_screen_up[]     = { "backlit.sh", "screen_up", NULL };
 static const char *backlit_screen_down[]   = { "backlit.sh", "screen_down", NULL };
-static const char *left_monitor[]          = { "wacom.sh", "0", NULL};
-static const char *right_monitor[]         = { "wacom.sh", "1", NULL};
+static const char *main_monitor[]          = { "wacom.sh", "0", NULL};
+static const char *aux_monitor[]           = { "wacom.sh", "1", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -149,8 +149,8 @@ static const Key keys[] = {
 	{ MODKEY                             , XK_Left                       , spawn          , {.v = cmus_prev } }             ,
 	{ MODKEY                             , XK_Right                      , spawn          , {.v = cmus_next } }             ,
 	{ MODKEY                             , XK_Home                       , spawn          , {.v = cmus_pause } }            ,
-	{ MODKEY                             , XK_F1                         , spawn          , {.v = left_monitor} }           ,
-	{ MODKEY                             , XK_F2                         , spawn          , {.v = right_monitor } }         ,
+	{ MODKEY                             , XK_F1                         , spawn          , {.v = aux_monitor} }            ,
+	{ MODKEY                             , XK_F2                         , spawn          , {.v = main_monitor } }          ,
 	{ MODKEY                             , XK_b                          , togglebar      , {0} }                           ,
 	{ MODKEY                             , XK_j                          , focusstack     , {.i = +1 } }                    ,
 	{ MODKEY                             , XK_k                          , focusstack     , {.i = -1 } }                    ,
