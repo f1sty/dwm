@@ -11,7 +11,7 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[] = {"RobotoMono Nerd Font:style=Regular:size=8",
                               "Font Awesome 6 Free:style=Regular:size=8"};
 static const char dmenufont[] = "Font Awesome 6 Free:style=Regular:size=8";
@@ -46,8 +46,6 @@ static const Rule rules[] = {
         {"Dunst"           , NULL        , NULL   , 0      , 1 , -1} ,
         {"Zathura"         , NULL        , NULL   , 1 << 2 , 0 , -1} ,
         {"Gnucash"         , NULL        , NULL   , 1 << 2 , 0 , -1} ,
-        {"DBeaver"         , NULL        , NULL   , 1 << 5 , 0 , 1}  ,
-        {"Postman"         , NULL        , NULL   , 1 << 5 , 0 , 1}  ,
         {"Slack"           , NULL        , NULL   , 1 << 3 , 0 , 1}  ,
         {"zoom"            , NULL        , NULL   , 1 << 3 , 1 , -1} ,
         {"discord"         , NULL        , NULL   , 1 << 3 , 0 , -1} ,
