@@ -116,10 +116,10 @@ static const char *aux_monitor[]           = { "wacom.sh", "1", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-        { NULL                               , XKB_KEY_XF86MonBrightnessUp   , spawn          , {.v = backlit_screen_up } }     ,
-        { NULL                               , XKB_KEY_XF86MonBrightnessDown , spawn          , {.v = backlit_screen_down } }   ,
-        { NULL                               , XKB_KEY_XF86KbdBrightnessUp   , spawn          , {.v = backlit_kbd_on } }        ,
-        { NULL                               , XKB_KEY_XF86KbdBrightnessDown , spawn          , {.v = backlit_kbd_off } }       ,
+        { 0                               , XKB_KEY_XF86MonBrightnessUp   , spawn          , {.v = backlit_screen_up } }     ,
+        { 0                               , XKB_KEY_XF86MonBrightnessDown , spawn          , {.v = backlit_screen_down } }   ,
+        { 0                               , XKB_KEY_XF86KbdBrightnessUp   , spawn          , {.v = backlit_kbd_on } }        ,
+        { 0                               , XKB_KEY_XF86KbdBrightnessDown , spawn          , {.v = backlit_kbd_off } }       ,
 	{ MODKEY                             , XK_p                          , spawn          , {.v = dmenucmd } }              ,
 	{ MODKEY                             , XK_r                          , spawn          , {.v = radio } }                 ,
 	{ MODKEY|ShiftMask                   , XK_h                          , spawn          , {.v = move_left } }             ,
