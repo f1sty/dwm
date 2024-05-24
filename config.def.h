@@ -39,7 +39,7 @@ static const Rule rules[] = {
         {"Gimp"            , NULL        , NULL   , 0      , 1 , -1} ,
         {"Google-chrome"   , NULL        , NULL   , 1 << 1 , 0 , -1} ,
         {"firefox"         , NULL        , NULL   , 1 << 1 , 0 , -1} ,
-        {"mpv"             , NULL        , NULL   , 1 << 4 , 1 , 1}  ,
+        {"mpv"             , NULL        , NULL   , 1 << 4 , 1 , -1}  ,
         {"Spotify"         , NULL        , NULL   , 1 << 4 , 1 , 1}  ,
         {"wiki"            , NULL        , NULL   , 0      , 1 , -1} ,
         {"todos"           , NULL        , NULL   , 0      , 1 , -1} ,
