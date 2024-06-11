@@ -12,8 +12,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[] = {"RobotoMono Nerd Font:style=Regular:size=8",
-                              "Font Awesome 6 Free:style=Regular:size=8"};
+static const char *fonts[] = {"RobotoMono Nerd Font:style=Regular:size=8", "Font Awesome 6 Free:style=Regular:size=8"};
 static const char dmenufont[] = "Font Awesome 6 Free:style=Regular:size=8";
 static const char color_fg[] = "#7270ee";
 static const char color_fg_selected[] = "#fdcd11";
@@ -62,9 +61,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[T]",      tile },    /* first entry is default */
-	{ "[F]",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "T",      tile },    /* first entry is default */
+	{ "F",      NULL },    /* no layout function means floating behavior */
+	{ "M",      monocle },
 };
 
 /* key definitions */
@@ -81,7 +80,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2]                    = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]              = {"rofi-menu.sh", NULL};
-static const char *termcmd[]               = {"st", "-e", "tmux-session.sh", NULL};
+static const char *termcmd[]               = {"st", NULL};
+static const char *tmuxsession[]           = {"st", "-e", "tmux-session.sh", NULL};
 static const char *wiki[]                  = {"st", "-e", "wiki.sh", NULL};
 static const char *notes[]                 = {"st", "-e", "notes.sh", NULL};
 static const char *mixer[]                 = {"st", "-e", "pulsemixer", NULL};
@@ -139,8 +139,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask                   , XK_n                          , spawn          , {.v = notes } }                 ,
 	{ MODKEY                             , XK_m                          , spawn          , {.v = cmus } }                  ,
 	{ MODKEY                             , XK_c                          , spawn          , {.v = close_notification } }    ,
-	{ MODKEY                             , XK_z                          , spawn          , {.v = pop_last_notification } } ,
-	{ MODKEY                             , XK_Return                     , spawn          , {.v = termcmd } }               ,
+	{ MODKEY|ShiftMask                   , XK_z                          , spawn          , {.v = pop_last_notification } } ,
+	{ MODKEY|ShiftMask                   , XK_Return                     , spawn          , {.v = termcmd } }               ,
+	{ MODKEY                             , XK_Return                     , spawn          , {.v = tmuxsession } }           ,
 	{ MODKEY                             , XK_Up                         , spawn          , {.v = volume_up } }             ,
 	{ MODKEY                             , XK_Down                       , spawn          , {.v = volume_down } }           ,
 	{ MODKEY                             , XK_End                        , spawn          , {.v = toggle_mute } }           ,
@@ -156,7 +157,7 @@ static const Key keys[] = {
 	{ MODKEY                             , XK_d                          , incnmaster     , {.i = -1 } }                    ,
 	{ MODKEY                             , XK_h                          , setmfact       , {.f = -0.05} }                  ,
 	{ MODKEY                             , XK_l                          , setmfact       , {.f = +0.05} }                  ,
-	{ MODKEY|ShiftMask                   , XK_Return                     , zoom           , {0} }                           ,
+	{ MODKEY                             , XK_z                          , zoom           , {0} }                           ,
 	{ MODKEY                             , XK_Tab                        , view           , {0} }                           ,
 	{ MODKEY|ShiftMask                   , XK_c                          , killclient     , {0} }                           ,
 	{ MODKEY                             , XK_t                          , setlayout      , {.v = &layouts[0]} }            ,
